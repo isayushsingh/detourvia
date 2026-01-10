@@ -50,7 +50,66 @@ export const CREATOR_TRIPS = [
     link: "/journal"
   },
    {
-    id: 21,
+    id: 5,
+    title: "Desert Voices",
+    location: "Morocco",
+    price: "₹4.2k",
+    rating: "4.9",
+    creatorName: "Anya",
+    creatorImage: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop",
+    isOriginal: true,
+    link: "/journal"
+  },
+  {
+    id: 6,
+    title: "Andaman Blueprint",
+    location: "Port Blair",
+    price: "₹25k",
+    rating: "4.96",
+    creatorName: "Neville",
+    creatorImage: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&auto=format&fit=crop", 
+    coverImage: "https://images.unsplash.com/photo-1596568460662-8e704e6e8e8e?w=600",
+    isOriginal: true,
+    link: "/journal"
+  },
+  {
+    id: 7,
+    title: "Paralympian Training",
+    location: "Cortina, Italy",
+    price: "₹5.2k",
+    rating: "5.0",
+    creatorName: "Jacopo",
+    creatorImage: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop",
+    coverImage: "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600",
+    isOriginal: true,
+    link: "/journal"
+  },
+  {
+    id: 8,
+    title: "Bangkok Weekender",
+    location: "Thailand",
+    price: "₹8.5k",
+    rating: "4.85",
+    creatorName: "Milli",
+    creatorImage: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop",
+    coverImage: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600",
+    isOriginal: true,
+    link: "/journal"
+  },
+  {
+    id: 9,
+    title: "Wheelchair Curling",
+    location: "Italy",
+    price: "₹3.1k",
+    rating: "4.99",
+    creatorName: "Amos",
+    creatorImage: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&auto=format&fit=crop",
+    coverImage: "https://images.unsplash.com/photo-1565992441121-4367c2967103?w=600",
+    isOriginal: true,
+    link: "/journal"
+  },
+   {
+    id: 10,
     title: "Desert Voices",
     location: "Morocco",
     price: "₹4.2k",
@@ -105,7 +164,7 @@ export const LOCATION_TRIPS = [
     title: "Black Sand Beach",
     price: "₹9.1k",
     rating: "5.0",
-    coverImage: "https://images.unsplash.com/photo-1504893524553-b8551055eb5f?w=600",
+    coverImage: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600",
     link: "/journal"
   }
 ];
