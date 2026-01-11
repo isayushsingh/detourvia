@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation'; // Import useRouter
 import { Globe, Search, Menu, Share, Heart, ChevronLeft, MoreHorizontal, User, MapPin, Grid } from 'lucide-react';
 
 interface HeaderProps {
@@ -12,6 +13,8 @@ interface HeaderProps {
 
 export default function Header({ variant = 'home', activeTab, setActiveTab }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(''); // State for input
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,15 +24,19 @@ export default function Header({ variant = 'home', activeTab, setActiveTab }: He
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // --- SEARCH HANDLER ---
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
   return (
     <header className={`sticky top-0 z-50 bg-[#FDFBF7]/95 backdrop-blur-md transition-all duration-300 ${isScrolled ? 'shadow-sm border-b border-gray-200' : ''}`}>
       
-      {/* =======================
-          TOP ROW: LOGO & ACTIONS 
-         ======================= */}
       <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between gap-4">
         
-        {/* LEFT: Logo & Back Button */}
+        {/* LEFT: Logo & Back */}
         <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
           {variant === 'journal' && (
             <Link href="/" className="p-2 -ml-2 hover:bg-black/5 rounded-full transition-colors text-gray-500 hover:text-black">
@@ -37,20 +44,13 @@ export default function Header({ variant = 'home', activeTab, setActiveTab }: He
             </Link>
           )}
           
-          {/* Logo: Hidden on Mobile Journal Page to make room for search */}
           <Link href="/" className={`font-serif font-bold text-lg flex items-center gap-2 tracking-tight group ${variant === 'journal' ? 'hidden md:flex' : 'flex'}`}>
              <Globe size={18} className="text-black group-hover:rotate-12 transition-transform" strokeWidth={1.5} />
-             <span>travel.log</span>
+             <span>detourvia</span>
           </Link>
         </div>
 
-        {/* MIDDLE: Header Search Bar */}
-        {/* Logic:
-            - Desktop Home: Shows only when scrolled.
-            - Desktop Journal: Always shows.
-            - Mobile Home: Never shows (uses the dedicated row below).
-            - Mobile Journal: Always shows (takes up the header space).
-        */}
+        {/* MIDDLE: Search Bar */}
         <div className={`
             flex-grow max-w-lg mx-auto
             ${variant === 'journal' ? 'flex md:flex' : 'hidden md:flex'}
@@ -61,13 +61,16 @@ export default function Header({ variant = 'home', activeTab, setActiveTab }: He
               <Search size={14} className="text-gray-400" />
               <input 
                 type="text" 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={handleSearch}
                 placeholder={variant === 'home' ? "Start your search..." : "Search journal..."}
                 className="bg-transparent border-none outline-none font-sans text-sm text-gray-800 placeholder:text-gray-400 w-full min-w-0"
               />
            </div>
         </div>
 
-        {/* RIGHT: Actions */}
+        {/* RIGHT: Actions (Unchanged) */}
         <div className="flex items-center gap-1 md:gap-2 flex-shrink-0">
            {variant === 'home' ? (
              <button className="p-2 hover:bg-black/5 rounded-full transition-colors text-gray-600">
@@ -89,17 +92,16 @@ export default function Header({ variant = 'home', activeTab, setActiveTab }: He
         </div>
       </div>
 
-
-      {/* =======================
-          MOBILE SEARCH BAR (Home Only)
-         ======================= */}
-      {/* Since Journal has search in header now, this is only for Home */}
+      {/* MOBILE SEARCH BAR (Home Only) */}
       {variant === 'home' && (
         <div className="md:hidden px-4 pb-3">
            <div className="flex items-center gap-2 w-full border border-gray-200 bg-white rounded-full px-4 py-2.5 shadow-sm">
               <Search size={16} className="text-black" />
               <input 
                  type="text" 
+                 value={searchQuery}
+                 onChange={(e) => setSearchQuery(e.target.value)}
+                 onKeyDown={handleSearch}
                  placeholder="Where to?" 
                  className="bg-transparent border-none outline-none font-sans text-sm text-gray-800 placeholder:text-gray-400 w-full"
               />
@@ -107,10 +109,7 @@ export default function Header({ variant = 'home', activeTab, setActiveTab }: He
         </div>
       )}
 
-
-      {/* =======================
-          TABS ROW (Home Only)
-         ======================= */}
+      {/* TABS ROW (Unchanged) */}
       {variant === 'home' && setActiveTab && (
         <div className={`w-full bg-[#FDFBF7]/95 transition-all duration-300 overflow-hidden ${isScrolled ? 'h-10 md:h-0 border-b md:border-none border-gray-100' : 'h-16 md:h-12'}`}>
            <div className="max-w-7xl mx-auto px-4 h-full flex justify-center gap-8 md:gap-12 items-center">
