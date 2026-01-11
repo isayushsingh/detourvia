@@ -11,9 +11,9 @@ export default function JournalHero({ trip, creator, openGallery }: { trip: Trip
     trip.itinerary[2]?.images[0] || trip.itinerary[0]?.images[0], 
   ];
     return (
-    <header className="mb-10">
+    <header className="mb-4">
     {/* 4-Column Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 rounded-xl overflow-hidden aspect-[4/3] md:aspect-[21/9] mb-8 shadow-sm border border-gray-100">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 rounded-xl overflow-hidden aspect-[4/3] md:aspect-auto md:h-[300px] mb-8 shadow-sm border border-gray-100">
          {heroGridImages.map((img, idx) => (
            <div key={idx} className="relative w-full h-full bg-gray-100 group">
              <Image src={img} alt="Hero" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />

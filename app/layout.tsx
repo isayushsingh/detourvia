@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
 const caveat = Caveat({ subsets: ["latin"], variable: '--font-caveat' });
 const dmSerif = DM_Serif_Display({ weight: "400", subsets: ["latin"], variable: '--font-serif' });
 export const metadata: Metadata = {
-  title: "My Travel Journal",
+  title: "detourvia",
   description: "A handwritten visual journey.",
 };
 

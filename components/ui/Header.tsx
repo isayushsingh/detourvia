@@ -38,11 +38,11 @@ export default function Header({ variant = 'home', activeTab, setActiveTab }: He
         
         {/* LEFT: Logo & Back */}
         <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
-          {variant === 'journal' && (
+          {/* {variant === 'journal' && (
             <Link href="/" className="p-2 -ml-2 hover:bg-black/5 rounded-full transition-colors text-gray-500 hover:text-black">
               <ChevronLeft size={20} />
             </Link>
-          )}
+          )} */}
           
           <Link href="/" className={`font-serif font-bold text-lg flex items-center gap-2 tracking-tight group ${variant === 'journal' ? 'hidden md:flex' : 'flex'}`}>
              <Globe size={18} className="text-black group-hover:rotate-12 transition-transform" strokeWidth={1.5} />

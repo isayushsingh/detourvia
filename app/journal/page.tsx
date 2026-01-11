@@ -47,7 +47,7 @@ function JournalContent() {
         onPrev={handlePrev}
       />
 
-      <div className="max-w-6xl mx-auto px-6 md:px-12 pt-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-10">
         
         {/* Pass separate Trip and Creator objects */}
         <JournalHero trip={trip} creator={creator} openGallery={openGallery} />
